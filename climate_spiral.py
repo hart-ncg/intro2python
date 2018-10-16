@@ -1,6 +1,7 @@
 # climatespiral.py
 '''A script, based on https://www.dataquest.io/blog/climate-temperature-spirals-python/ example, that generates the famous Ed Hawkins Climate Spiral.'''
 
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os
@@ -40,7 +41,7 @@ ax1 = plt.subplot(111, projection='polar')
 
 r = hc_1850['value'] + 1
 theta = np.linspace(0, 2*np.pi, 12)
-x1.plot(theta, r)
+ax1.plot(theta, r)
 ax1.axes.get_yaxis().set_ticklabels([])
 ax1.axes.get_xaxis().set_ticklabels([])
 
@@ -50,7 +51,7 @@ ax1.set_axis_bgcolor('#000100')
 ax1.set_title("Global Temperature Change (1850-2017)", color='white', fontdict={'fontsize': 30})
 ax1.text(0,0,"1850", color='white', size=30, ha='center')
 hadcrut['value'].max()
-x1.set_ylim(0, 3.25)
+ax1.set_ylim(0, 3.25)
 
 fig = plt.figure(figsize=(14,14))
 ax1 = plt.subplot(111, projection='polar')
@@ -73,8 +74,6 @@ for year in years:
 #     ax1.text(0,0, str(year), color='white', size=30, ha='center')
     ax1.plot(theta, r)
 
-ax1.plot(theta, r, c=plt.cm.viridis(index)) # Index is a counter variable
-ax1.plot(theta, r, c=plt.cm.viridis(index*2))
 
 fig = plt.figure(figsize=(14,14))
 ax1 = plt.subplot(111, projection='polar')
