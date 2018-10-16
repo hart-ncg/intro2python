@@ -10,6 +10,7 @@ To get started on this module, you will need to install python and a few modules
 (c) We can now install the final few things needed by typing this command in the conda prompt window:
 
 conda install numpy, matplotlib, spyder, pandas
+
 Type “y” when asked to proceed with installation.
 
 (d) Close the conda prompt window. You should now have a program called Spyder available in your start menu. Spyder provides a good graphical interface to Python and will allow you to open the river catchment model and make modifications to the variables.
