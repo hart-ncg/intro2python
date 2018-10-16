@@ -3,12 +3,11 @@
 
 import pandas as pd
 import numpy as np
-import urllib
 import os
 
-if not os.path.exists('HadCRUT.4.6.0.0.monthly_ns_avg.txt'):
-    urllib.urlretrieve("https://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.6.0.0.monthly_ns_avg.txt","HadCRUT.4.6.0.0.monthly_ns_avg.txt")
-
+#if not os.path.exists('HadCRUT.4.6.0.0.monthly_ns_avg.txt'):
+#    urllib.urlretrieve("https://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.6.0.0.monthly_ns_avg.txt","HadCRUT.4.6.0.0.monthly_ns_avg.txt")
+#
 hadcrut = pd.read_csv(
     "HadCRUT.4.6.0.0.monthly_ns_avg.txt",
     delim_whitespace=True,
