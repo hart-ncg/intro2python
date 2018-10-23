@@ -51,3 +51,21 @@ A long and terrifying list of things will appear.
 Just type `y` to accept the installation of these packages.
 
 Let these install.
+
+There is a problem with the Spyder Installation.
+https://github.com/conda-forge/pyqt-feedstock/issues/19
+```bash
+conda install -c defaults pyqt=5 qt
+```
+
+REMEMBER TO type `y` to accept these installations!
+
+Now to test that it has worked type:
+```bash
+spyder
+```
+hit enter and a few dialogue boxes will open. Accept them all.
+
+Then you should get a window that looks like this:
+
+https://raw.githubusercontent.com/spyder-ide/conda-manager/master/img_src/screenshot-spyder.png
