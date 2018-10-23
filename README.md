@@ -58,6 +58,8 @@ https://github.com/conda-forge/pyqt-feedstock/issues/19
 conda install -c defaults pyqt=5 qt
 ```
 
+REMEMBER TO type `y` to accept these installations!
+
 Now to test that it has worked type:
 ```bash
 spyder
