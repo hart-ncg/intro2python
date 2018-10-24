@@ -30,8 +30,11 @@ and typing:
 and it should be the first application that appears.
 
 2. Install wget by copy and pasting the following into the command line:
+
 `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
 Once that is complete do the same with this command:
+
 `brew install wget`
 
 You are now set up to install Python following the instructions found here and included below.
