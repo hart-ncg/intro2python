@@ -17,7 +17,7 @@ Type “y” when asked to proceed with installation.
 
 ---------------------------
 ### Instructions for mac
-https://stackoverflow.com/questions/38080407/how-can-i-install-the-latest-anaconda-with-wget
+You will need to first install homebrew, a Mac utility to allow installation of important command line utilities. Proceed as follows:
 
 1. Open the 'Terminal' app on your Mac.
 
@@ -29,7 +29,17 @@ and typing:
 
 and it should be the first application that appears.
 
-2. Copy and paste the following commands one line at a time.
+2. Install wget by copy and pasting the following into the command line:
+`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+Once that is complete do the same with this command:
+`brew install wget`
+
+You are now set up to install Python following the instructions found here and included below.
+
+https://stackoverflow.com/questions/38080407/how-can-i-install-the-latest-anaconda-with-wget
+
+
+3. Copy and paste the following commands one line at a time.
 
 Paste them into your terminal prompt.
 Hit Enter after EACH LINE.
@@ -69,3 +79,5 @@ hit enter and a few dialogue boxes will open. Accept them all.
 Then you should get a window that looks like this:
 
 https://raw.githubusercontent.com/spyder-ide/conda-manager/master/img_src/screenshot-spyder.png
+
+If that the spyder command is not found. Close the terminal, reopen and try this final step again.
