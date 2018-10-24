@@ -33,7 +33,7 @@ and it should be the first application that appears.
 
 `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
-And press ENTER. If ask yes/no, type `y` and press ENTER. Once that is complete do the same with this command:
+And press ENTER. If asked yes/no, type `y` and press ENTER. Once that is complete do the same with this command:
 
 `brew install wget`
 
