@@ -32,11 +32,15 @@ def streamflow_velocity(d, s, bedform="sand"):
     computed according to Manning Equation
     Arguments:
     ---------
-      "bedrock"
-      "silt-clay"
-      "sand"
-      "gravel"
-      "boulder"
+    :d (float): depth
+    :s (float): channel gradient
+    :bedform (str): the type of bedform impacting the streamflow velocity. Can take on
+                    the following arguments
+                      "bedrock"
+                      "silt-clay"
+                      "sand"
+                      "gravel"
+                      "boulder"
 
     Returns: Velocity in m/s
     """
