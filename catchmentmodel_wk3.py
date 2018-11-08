@@ -43,7 +43,7 @@ catchment_properties = {1:
     {'Annual_precip'  : 200,       # mm/yr
     'Potential_ET' : 2000,        # mm/yr
     'Catchment_area' : 0.5*1e12,  # m^2 (1e6 is computer code for 10^6)
-    'Headwaters_altitude' : 4000.,# m
+    'Headwaters_altitude' : 1000.,# m
     'River_length' : 500.*1e3,   # m
     'Bedform' : 'rock',           # bedrock, silt-clay, sand, gravel, boulder
     'Channel_depth' : 1,          # m
@@ -51,9 +51,9 @@ catchment_properties = {1:
     'Sediment_fraction' : 0.7},    # fraction of discharge
      3:
     {'Annual_precip'  : 200,       # mm/yr
-    'Potential_ET' : 2000,        # mm/yr
+    'Potential_ET' : 2100,        # mm/yr
     'Catchment_area' : 0.5*1e12,  # m^2 (1e6 is computer code for 10^6)
-    'Headwaters_altitude' : 4000.,# m
+    'Headwaters_altitude' : 500.,# m
     'River_length' : 500.*1e3,   # m
     'Bedform' : 'rock',           # bedrock, silt-clay, sand, gravel, boulder
     'Channel_depth' : 1,          # m
@@ -112,19 +112,47 @@ for key in basinkeys:
     area_average_rain = masked_rainfall.mean()
     for prm in params.keys():
         exec("%s = params['%s']" %(prm,prm))
-    Sediment, Discharge = total_sediment_export(area_average_rain, Potential_ET, \
+    Sediment,Discharge = total_sediment_export(area_average_rain,Potential_ET,\
                       Catchment_area, Sediment_fraction, Channel_width,\
                       Channel_depth, Headwaters_altitude, River_length)
     Total_sediment += Sediment
 
-print('Annual Mean Sediment Yield for Drainage Basin: %2.2f tons' %(Total_sediment))
+print('Annual Mean Sediment Yield for Drainage Basin: %2.2f tons'\
+      %(Total_sediment))
 
 
-### Random rainfall distribution
+### Random rainfall distribution example
 x, y, z = 2*np.random.random((3,10))
 # Set up a regular grid of interpolation points
-xi, yi = np.linspace(x.min(), x.max(), 1000), np.linspace(y.min(), y.max(), 1000)
+xi,yi = np.linspace(x.min(), x.max(), 1000), np.linspace(y.min(), y.max(), 1000)
 xi, yi = np.meshgrid(xi, yi)
 rbf = scipy.interpolate.Rbf(x, y, z, function='linear')
-rainfall = rbf(xi, yi)
+rainfall_variation = rbf(xi, yi)
+
+### Incorporate random rainfall into for loop to generate interannual
+### variability time series
+years100_sediment=[]
+for yr in range(100):
+    x, y, z = 2*np.random.random((3,10))
+    # Set up a regular grid of interpolation points
+    xi,yi = np.linspace(x.min(),x.max(),1000),np.linspace(y.min(),y.max(),1000)
+    xi, yi = np.meshgrid(xi, yi)
+    rbf = scipy.interpolate.Rbf(x, y, z, function='linear')
+    rainfall_variation = rbf(xi, yi)
+    year_rain = rainfall_variation*clim_rainfall
+    Total_sediment=0
+    for key in basinkeys:
+        ### First compute area rainfall for each sub-catchment.
+        params=catchment_properties[key]
+        area_mask = params['area_mask']
+        masked_rainfall = np.ma.MaskedArray(year_rain,mask = area_mask)
+        area_avg_rain = masked_rainfall.mean()
+        for prm in params.keys():
+            exec("%s = params['%s']" %(prm,prm))
+        Sediment,Discharge = total_sediment_export(area_avg_rain,Potential_ET,\
+                          Catchment_area, Sediment_fraction, Channel_width,\
+                          Channel_depth, Headwaters_altitude, River_length)
+        Total_sediment += Sediment
+    years100_sediment.append(Total_sediment)
+plt.figure();plt.plot(years100_sediment)
 
