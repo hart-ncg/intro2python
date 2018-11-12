@@ -6,10 +6,10 @@ from TwitterAPI import TwitterAPI
 #import matplotlib.pyplot as plt
 #import pandas as pd
 
-consumer_key = 'WwUbyLUl8cIUnDGMYRxpsLUIL'
-consumer_secret = 'FTARCgwqt1IQi4MZnythdZCLF1324kxzXwl335E9X9pkm3gEmY'
-access_token = '718072788-OUgPkNWc5ptszESbBEqYLxWMJJOah1NGA8VL5w5v'
-access_token_secret = '2uIQHwltcHGyPBSNlueRDstt2wXWbkjiSwOnR0YdWTuyt'
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_token_secret = ''
 
 api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
 
