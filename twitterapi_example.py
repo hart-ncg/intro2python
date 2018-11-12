@@ -1,4 +1,4 @@
-# hashtagtimeseries.py
+# twitterapi_example.py
 '''A simple demonstration of the twitter API'''
 #
 from TwitterAPI import TwitterAPI
